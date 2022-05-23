@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div class="container">
+          <div id="app">
+            <h1 class="text-center py-4 text-3xl">ToDo</h1>
+            <form>
+              <input required placeholder="Inserisci nuova task..."  type="text" name="Inserisci todo" v-model="userInput"/>
+              <button @click.prevent="pushTodo()">
+                <i class="fa-solid fa-circle-plus"></i>
+              </button>
+            </form>
+            <ul v-if="todos.length > 0">
+              <li v-for="(todo,index) in todos">
+                <span :class="{'line-through' : todo.completed}" @click="todo.completed = !todo.completed">{{todo.text}}</span>
+                <i @click="removeTodo(index)"></i>
+              </li>
+            </ul>
+            <div v-else="">
+              Inserisci un ToDo
+            </div>
+          </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="vue/main.js"></script>
+</body>
+</html>
